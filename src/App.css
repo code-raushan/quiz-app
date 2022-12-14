@@ -49,4 +49,12 @@
 .Quiz div{
   margin: 1rem;
 }
-
+.pagination{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.pagination div{
+  height: 25px;
+  width: 40px;
+}
