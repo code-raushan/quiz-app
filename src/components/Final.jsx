@@ -3,9 +3,13 @@ import { GameContext } from '../utils/Context'
 
 
 const Final = () => {
-    const {score}=useContext(GameContext)
+    const {score, userName}=useContext(GameContext)
+    
   return (
-    <div>{score}</div>
+    <div>
+        <h1>Hey {userName}</h1>
+        <h2>You scored {score<0?'0':score}</h2>
+    </div>
   )
 }
 
