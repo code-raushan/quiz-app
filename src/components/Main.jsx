@@ -6,12 +6,13 @@ const Main = () => {
     useContext(GameContext);
   return (
     <div className="Main">
+        
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
-        <div style={{ margin: 2 }}>{gameState}</div>
+        <div style={{ margin: 2, fontWeight: 500, fontSize: 15 }}>Welcome to Quiz😀</div>
         <input
           type="text"
           placeholder="Your Name"

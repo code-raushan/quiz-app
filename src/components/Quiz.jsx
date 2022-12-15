@@ -1,13 +1,13 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext } from "react";
 import { GameContext } from "../utils/Context";
 import axios from "axios";
 import { useQuery } from "react-query";
-
+import Options from "./Options";
 const Quiz = () => {
   const url =
     "https://the-trivia-api.com/api/questions?categories=history&limit=10";
-  const { userName, questionNo, setQuestionNo } = useContext(GameContext);
+  const { setGameState, userName, questionNo, setQuestionNo } =
+    useContext(GameContext);
 
   const getQuestion = async () => {
     const result = await axios.get(url);
@@ -23,48 +23,71 @@ const Quiz = () => {
   return (
     <div className="Quiz">
       <div className="header">
-        <div>Hello {userName}</div>
+        <div className="user-name">Hello {userName}</div>
         {questionNo === 9 ? (
           <div>
-            <button>Submit Quiz</button>
+            <button
+              className="header-btn"
+              onClick={() => {
+                setGameState("Finished");
+              }}
+            >
+              Submit Quiz
+            </button>
           </div>
         ) : (
           <div>
-            <button>Finish Quiz</button>
+            <button
+              className="header-btn"
+              onClick={() => {
+                setGameState("Finished");
+              }}
+            >
+              Finish Quiz
+            </button>
           </div>
         )}
       </div>
 
-      <div>
-        {data[questionNo].question}
-        {data.length}
+      <div className="Questions">
+        <div className="question-header">{data[questionNo].question}</div>
+        <div className="options">
+          <Options question={{ questionNo, data }} />
+        </div>
       </div>
 
       <div className="pagination">
-        {questionNo !== 0 && (
-          <div>
-            <button
-              onClick={() => {
-                setQuestionNo((no) => no - 1);
-              }}
-            >
-              Previous
-            </button>
-          </div>
-        )}
-        {questionNo !== 9 && (
-          <div>
-            <button
-              onClick={() => {
-                setQuestionNo((no) => no + 1);
-              }}
-            >
-              Next
-            </button>
-          </div>
-        )}
+        <div>
+          {questionNo !== 0 && (
+            <div>
+              <button
+              className="pagination-btn"
+                onClick={() => {
+                  setQuestionNo((no) => no - 1);
+                }}
+              >
+                Previous
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="question-no">{questionNo + 1}</div>
+        <div>
+          {questionNo !== 9 && (
+            <div>
+              <button
+              className="pagination-btn"
+                onClick={() => {
+                  setQuestionNo((no) => no + 1);
+                }}
+              >
+                Next
+              </button>
+            </div>
+          )}
+        </div>
       </div>
-      <div>{questionNo}</div>
+      
     </div>
   );
 };
