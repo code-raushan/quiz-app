@@ -12,6 +12,7 @@ function App() {
   const [userName, setUserName] = useState("");
   const [questionNo, setQuestionNo] = useState(0);
   const [score, setScore]=useState(0)
+  const [questionSet, setQuestionSet]=useState([])
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
@@ -25,7 +26,9 @@ function App() {
             score, 
             setScore,
             questionNo,
-            setQuestionNo
+            setQuestionNo,
+            questionSet,
+            setQuestionSet
           }}
         >
           {gameState === "Home" && <Main />}

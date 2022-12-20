@@ -6,7 +6,7 @@ import Options from "./Options";
 const Quiz = () => {
   const url =
     "https://the-trivia-api.com/api/questions?categories=history&limit=10";
-  const { setGameState, userName, questionNo, setQuestionNo } =
+  const { setGameState, userName, questionNo, setQuestionNo, setQuestionSet } =
     useContext(GameContext);
 
   const getQuestion = async () => {
@@ -19,7 +19,7 @@ const Quiz = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Failed...</div>;
-
+  setQuestionSet(data)
   return (
     <div className="Quiz">
       <div className="header">
