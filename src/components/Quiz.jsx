@@ -15,10 +15,12 @@ const Quiz = () => {
     return list;
   };
   const { data, isLoading, error } = useQuery("getQuestions", getQuestion);
+
   console.log(data);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Failed...</div>;
+
   setQuestionSet(data)
   return (
     <div className="Quiz">

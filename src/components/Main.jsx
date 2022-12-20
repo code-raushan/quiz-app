@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { GameContext } from "../utils/Context";
 
 const Main = () => {
-  const { gameState, setGameState, userName, setUserName } =
+  const { setGameState, userName, setUserName } =
     useContext(GameContext);
   return (
     <div className="Main">
